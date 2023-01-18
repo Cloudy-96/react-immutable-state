@@ -3,10 +3,24 @@ import {initialWorkouts, generateWorkout} from "./Workouts.js"
 import "./App.css"
 
 function App() {
+  //workouts = list of existing workouts
   const [workouts, setWorkouts] = useState(initialWorkouts)
 
-  const addNewWorkout = () => {
+  const addNewWorkout = (event) => {
+    // Implement the `addNewWorkout` function to add the 
+    // `newWorkout` object to the `workouts` state in an 
+    // immutable way.
+
+    event.preventDefault();
+
+    //get the new workout
     const newWorkout = generateWorkout()
+
+    //add new workout to workouts array (line 6)
+    //spread operator
+
+    setWorkouts([...workouts, newWorkout]);
+
     console.log("addNewWorkout:", newWorkout)
   }
 
@@ -17,6 +31,8 @@ function App() {
   const completeWorkout = (workout) => {
     console.log("completeWorkout:", workout)
   }
+
+
 
   return (
     <div className="App">
